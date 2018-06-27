@@ -21,7 +21,6 @@ script:
 
 after_success:
   - if [[ $TRAVIS_NODE_VERSION == "8" ]]; then yarn codecov; fi
-  - npm run travis-deploy-once "npm run semantic-release"
 
 branches:
   except:
