@@ -1,0 +1,39 @@
+language: node_js
+
+cache: yarn
+
+notifications:
+  email: false
+
+node_js:
+  - 10
+  - 9
+  - 8
+  - 6
+
+install:
+  - yarn
+
+before_script:
+  - yarn ci
+
+script:
+  - yarn build
+
+after_success:
+  - if [[ $TRAVIS_NODE_VERSION == "8" ]]; then yarn codecov; fi
+  - npm run travis-deploy-once "npm run semantic-release"
+
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+
+deploy:
+  provider: script
+  script: yarn semantic-release
+  skip_cleanup: true
+  on:
+    tags: false
+    branch: master
+    repo: dcodeteam/redux-utils
+    condition: $TRAVIS_NODE_VERSION = 8

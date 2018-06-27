@@ -1,6 +1,6 @@
 {
   "name": "@dc0de/redux-utils",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Common utils for redux ecosystem",
   "main": "lib/index.js",
   "repository": "https://github.com/dcodeteam/redux-utils.git",
@@ -28,7 +28,7 @@
     ]
   },
   "scripts": {
-    "ci": "yarn lint && yarn dts && yarn cover --ci && yarn codecov",
+    "ci": "yarn lint && yarn dts && yarn cover --ci",
     "all": "yarn lint --fix && yarn dts && yarn cover",
     "test": "jest",
     "cover": "yarn test --coverage",
@@ -38,7 +38,9 @@
     "lint": "js-scripts lint",
     "build": "yarn build:es && yarn build:lib",
     "build:es": "rimraf ./es && rollup -c ./config/rollup.js",
-    "build:lib": "rimraf ./lib && tsc --project tsconfig.lib.json"
+    "build:lib": "rimraf ./lib && tsc --project tsconfig.lib.json",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {
     "immupdate": "^1.2.0",
@@ -65,7 +67,9 @@
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-typescript2": "^0.15.1",
     "rxjs": "^6.2.1",
+    "semantic-release": "^15.6.0",
     "source-map-support": "^0.5.6",
+    "travis-deploy-once": "^5.0.0",
     "ts-jest": "^22.4.6",
     "typescript": "^2.9.2"
   }
