@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "@dc0de/redux-utils",
-  "version": "0.0.0-development",
+  "version": "1.0.1",
   "description": "Common utils for redux ecosystem",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
