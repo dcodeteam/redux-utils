@@ -1,0 +1,16 @@
+/src
+/config
+/coverage
+
+/.idea
+
+/.eslintrc
+/.gitignore
+/.npmignore
+/.prettierrc
+
+/yarn.lock
+
+/tsconfig.json
+/tsconfig.es.json
+/tsconfig.lib.json

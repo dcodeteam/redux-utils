@@ -1,0 +1,6 @@
+{
+  "extends": ["@dc0de/eslint-config"],
+  "rules": {
+    "strict": "off"
+  }
+}

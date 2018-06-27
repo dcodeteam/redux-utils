@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReducerBuilder actions reducer validation 1`] = `"ReducerBuilder: \`actions\` expected to be a array."`;
+
+exports[`ReducerBuilder actions reducer validation 2`] = `"ReducerBuilder: \`actions\` expected to be a array."`;
+
+exports[`ReducerBuilder actions reducer validation 3`] = `Array []`;
+
+exports[`ReducerBuilder actions reducer validation 4`] = `"ReducerBuilder: \`reducer\` expected to be a function."`;
+
+exports[`ReducerBuilder actions reducer validation 5`] = `"ReducerBuilder: \`reducer\` expected to be a function."`;
+
+exports[`ReducerBuilder build without sub reducers 1`] = `
+Array [
+  Array [
+    "ReducerBuilder: final reducer has no sub reducers.",
+  ],
+]
+`;
+
+exports[`ReducerBuilder child reducer validation 1`] = `"ReducerBuilder: \`childKey\` expected to be defined."`;
+
+exports[`ReducerBuilder child reducer validation 2`] = `"ReducerBuilder: \`childKey\` expected to be defined."`;
+
+exports[`ReducerBuilder child reducer validation 3`] = `"ReducerBuilder: \`reducer\` expected to be a function."`;
+
+exports[`ReducerBuilder child reducer validation 4`] = `"ReducerBuilder: \`reducer\` expected to be a function."`;
+
+exports[`ReducerBuilder init validation 1`] = `"ReducerBuilder: \`initialState\` expected to be a plain object."`;
+
+exports[`ReducerBuilder init validation 2`] = `"ReducerBuilder: \`initialState\` expected to be a plain object."`;
+
+exports[`ReducerBuilder init validation 3`] = `"ReducerBuilder: \`initialState\` expected to be a plain object."`;
+
+exports[`ReducerBuilder sub reducer validation 1`] = `"ReducerBuilder: \`reducer\` expected to be a function."`;
+
+exports[`ReducerBuilder sub reducer validation 2`] = `"ReducerBuilder: \`reducer\` expected to be a function."`;
