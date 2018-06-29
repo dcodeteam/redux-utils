@@ -44,50 +44,50 @@ describe("AsyncRequest", () => {
       expect(
         reducer(
           {
-            submitted: false,
-            submitting: false,
-            submitFailed: false,
+            requested: false,
+            requesting: false,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
-        submitted: true,
-        submitting: true,
-        submitFailed: false,
+        requested: true,
+        requesting: true,
+        requestFailed: false,
       });
 
       expect(
         reducer(
           {
             response: 10,
-            submitted: true,
-            submitting: false,
-            submitFailed: false,
+            requested: true,
+            requesting: false,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         response: 10,
-        submitted: true,
-        submitting: true,
-        submitFailed: false,
+        requested: true,
+        requesting: true,
+        requestFailed: false,
       });
 
       expect(
         reducer(
           {
             error,
-            submitted: true,
-            submitting: false,
-            submitFailed: false,
+            requested: true,
+            requesting: false,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         error,
-        submitted: true,
-        submitting: true,
-        submitFailed: false,
+        requested: true,
+        requesting: true,
+        requestFailed: false,
       });
 
       expect(
@@ -95,18 +95,18 @@ describe("AsyncRequest", () => {
           {
             error,
             response: 10,
-            submitted: true,
-            submitting: false,
-            submitFailed: false,
+            requested: true,
+            requesting: false,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         error,
         response: 10,
-        submitted: true,
-        submitting: true,
-        submitFailed: false,
+        requested: true,
+        requesting: true,
+        requestFailed: false,
       });
     });
 
@@ -128,51 +128,51 @@ describe("AsyncRequest", () => {
       expect(
         reducer(
           {
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         response: 30,
-        submitted: true,
-        submitting: false,
-        submitFailed: false,
+        requested: true,
+        requesting: false,
+        requestFailed: false,
       });
 
       expect(
         reducer(
           {
             response: 10,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         response: 30,
-        submitted: true,
-        submitting: false,
-        submitFailed: false,
+        requested: true,
+        requesting: false,
+        requestFailed: false,
       });
 
       expect(
         reducer(
           {
             error,
-            submitted: true,
-            submitting: false,
-            submitFailed: false,
+            requested: true,
+            requesting: false,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         response: 30,
-        submitted: true,
-        submitting: false,
-        submitFailed: false,
+        requested: true,
+        requesting: false,
+        requestFailed: false,
       });
 
       expect(
@@ -180,17 +180,17 @@ describe("AsyncRequest", () => {
           {
             error,
             response: 10,
-            submitted: true,
-            submitting: false,
-            submitFailed: false,
+            requested: true,
+            requesting: false,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         response: 30,
-        submitted: true,
-        submitting: false,
-        submitFailed: false,
+        requested: true,
+        requesting: false,
+        requestFailed: false,
       });
     });
 
@@ -214,52 +214,52 @@ describe("AsyncRequest", () => {
       expect(
         reducer(
           {
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         error: actionError,
-        submitted: true,
-        submitting: false,
-        submitFailed: true,
+        requested: true,
+        requesting: false,
+        requestFailed: true,
       });
 
       expect(
         reducer(
           {
             response: 10,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         response: 10,
         error: actionError,
-        submitted: true,
-        submitting: false,
-        submitFailed: true,
+        requested: true,
+        requesting: false,
+        requestFailed: true,
       });
 
       expect(
         reducer(
           {
             error: stateError,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         error: actionError,
-        submitted: true,
-        submitting: false,
-        submitFailed: true,
+        requested: true,
+        requesting: false,
+        requestFailed: true,
       });
 
       expect(
@@ -267,18 +267,18 @@ describe("AsyncRequest", () => {
           {
             response: 10,
             error: stateError,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         response: 10,
         error: actionError,
-        submitted: true,
-        submitting: false,
-        submitFailed: true,
+        requested: true,
+        requesting: false,
+        requestFailed: true,
       });
     });
 
@@ -296,48 +296,48 @@ describe("AsyncRequest", () => {
       expect(
         reducer(
           {
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
-        submitted: false,
-        submitting: false,
-        submitFailed: false,
+        requested: false,
+        requesting: false,
+        requestFailed: false,
       });
 
       expect(
         reducer(
           {
             response: 10,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
-        submitted: false,
-        submitting: false,
-        submitFailed: false,
+        requested: false,
+        requesting: false,
+        requestFailed: false,
       });
 
       expect(
         reducer(
           {
             error,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
-        submitted: false,
-        submitting: false,
-        submitFailed: false,
+        requested: false,
+        requesting: false,
+        requestFailed: false,
       });
 
       expect(
@@ -345,16 +345,16 @@ describe("AsyncRequest", () => {
           {
             error,
             response: 10,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
-        submitted: false,
-        submitting: false,
-        submitFailed: false,
+        requested: false,
+        requesting: false,
+        requestFailed: false,
       });
     });
 
@@ -372,50 +372,50 @@ describe("AsyncRequest", () => {
       expect(
         reducer(
           {
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
-        submitted: true,
-        submitting: true,
-        submitFailed: false,
+        requested: true,
+        requesting: true,
+        requestFailed: false,
       });
 
       expect(
         reducer(
           {
             response: 10,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         response: 10,
-        submitted: true,
-        submitting: true,
-        submitFailed: false,
+        requested: true,
+        requesting: true,
+        requestFailed: false,
       });
 
       expect(
         reducer(
           {
             error,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         error,
-        submitted: true,
-        submitting: true,
-        submitFailed: false,
+        requested: true,
+        requesting: true,
+        requestFailed: false,
       });
 
       expect(
@@ -423,18 +423,18 @@ describe("AsyncRequest", () => {
           {
             error,
             response: 10,
-            submitted: true,
-            submitting: true,
-            submitFailed: false,
+            requested: true,
+            requesting: true,
+            requestFailed: false,
           },
           action,
         ),
       ).toEqual({
         error,
         response: 10,
-        submitted: true,
-        submitting: true,
-        submitFailed: false,
+        requested: true,
+        requesting: true,
+        requestFailed: false,
       });
     });
   });

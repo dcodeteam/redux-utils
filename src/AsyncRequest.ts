@@ -5,9 +5,9 @@ import { SubReducer } from "./types";
 
 export function getInitialAsyncRequest<V>(): AsyncRequest<V> {
   return {
-    submitted: false,
-    submitting: false,
-    submitFailed: false,
+    requested: false,
+    requesting: false,
+    requestFailed: false,
   };
 }
 
@@ -15,9 +15,9 @@ export interface AsyncRequest<R = {}> {
   readonly error?: Error;
   readonly response?: R;
 
-  readonly submitted: boolean;
-  readonly submitting: boolean;
-  readonly submitFailed: boolean;
+  readonly requested: boolean;
+  readonly requesting: boolean;
+  readonly requestFailed: boolean;
 }
 
 export function createAsyncRequestReducer<V>(
@@ -29,8 +29,8 @@ export function createAsyncRequestReducer<V>(
   return (state: AsyncRequest<V>, action) => {
     if (action.type === perform) {
       return update(state, {
-        submitted: true,
-        submitting: true,
+        requested: true,
+        requesting: true,
       });
     }
 
@@ -40,8 +40,8 @@ export function createAsyncRequestReducer<V>(
       return update(state, {
         error: DELETE,
         response: payload,
-        submitting: false,
-        submitFailed: false,
+        requesting: false,
+        requestFailed: false,
       });
     }
 
@@ -50,8 +50,8 @@ export function createAsyncRequestReducer<V>(
 
       return update(state, {
         error: payload,
-        submitting: false,
-        submitFailed: true,
+        requesting: false,
+        requestFailed: true,
       });
     }
 

@@ -2,8 +2,8 @@
 
 exports[`AsyncRequest getInitialAsyncRequest initial value 1`] = `
 Object {
-  "submitFailed": false,
-  "submitted": false,
-  "submitting": false,
+  "requestFailed": false,
+  "requested": false,
+  "requesting": false,
 }
 `;
