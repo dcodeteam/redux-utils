@@ -77,3 +77,21 @@ export function createAsyncValueDictReducer<V>(
     });
   };
 }
+
+export function isAsyncValueFetching<T>(
+  value: undefined | AsyncValue<T>,
+): value is AsyncValue<T> {
+  return Boolean(value && value.fetching);
+}
+
+export function getAsyncValueError(
+  value: undefined | AsyncValue,
+): undefined | Error {
+  return value && value.error;
+}
+
+export function getAsyncValuePayload<T>(
+  value: undefined | AsyncValue<T>,
+): undefined | T {
+  return value && value.payload;
+}

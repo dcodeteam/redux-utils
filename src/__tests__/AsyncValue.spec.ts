@@ -4,22 +4,25 @@ import { FulfillAction, PerformAction, RejectAction } from "../AsyncActions";
 import {
   createAsyncValueDictReducer,
   createAsyncValueReducer,
+  getAsyncValueError,
+  getAsyncValuePayload,
   getInitialAsyncValue,
+  isAsyncValueFetching,
 } from "../AsyncValue";
 
-describe("AsyncRequest", () => {
+describe("AsyncValue", () => {
   const perform = "perform";
   const fulfill = "fulfill";
   const reject = "reject";
   const reset = "reset";
 
-  describe("getInitialAsyncRequest", () => {
+  describe("getInitialAsyncValue", () => {
     test("initial value", () => {
       expect(getInitialAsyncValue()).toMatchSnapshot();
     });
   });
 
-  describe("createAsyncRequestReducer", () => {
+  describe("createAsyncValueReducer", () => {
     test("creation", () => {
       const reducer = createAsyncValueReducer<number>(
         perform,
@@ -312,6 +315,34 @@ describe("AsyncRequest", () => {
         1: { fetching: false, payload: 10 },
         2: { fetching: true, error },
       });
+    });
+  });
+
+  describe("isAsyncValueFetching", () => {
+    test("basics", () => {
+      expect(isAsyncValueFetching(undefined)).toBe(false);
+      expect(isAsyncValueFetching({ fetching: true })).toBe(true);
+      expect(isAsyncValueFetching({ fetching: false })).toBe(false);
+    });
+  });
+
+  describe("getAsyncValueError", () => {
+    test("basics", () => {
+      const error = new Error("AsyncError");
+
+      expect(getAsyncValueError(undefined)).toBe(undefined);
+      expect(getAsyncValueError({ fetching: true })).toBe(undefined);
+      expect(getAsyncValueError({ fetching: true, error })).toBe(error);
+    });
+  });
+
+  describe("getAsyncValuePayload", () => {
+    test("basics", () => {
+      const payload = {};
+
+      expect(getAsyncValuePayload(undefined)).toBe(undefined);
+      expect(getAsyncValuePayload({ fetching: true })).toBe(undefined);
+      expect(getAsyncValuePayload({ fetching: true, payload })).toBe(payload);
     });
   });
 });
