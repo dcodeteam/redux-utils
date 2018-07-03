@@ -46,8 +46,8 @@ describe("AsyncRequest", () => {
         fetching: true,
       });
 
-      expect(reducer({ value: 10, fetching: false }, action)).toEqual({
-        value: 10,
+      expect(reducer({ payload: 10, fetching: false }, action)).toEqual({
+        payload: 10,
         fetching: true,
       });
 
@@ -56,9 +56,9 @@ describe("AsyncRequest", () => {
         fetching: true,
       });
 
-      expect(reducer({ error, value: 10, fetching: false }, action)).toEqual({
+      expect(reducer({ error, payload: 10, fetching: false }, action)).toEqual({
         error,
-        value: 10,
+        payload: 10,
         fetching: true,
       });
     });
@@ -79,22 +79,22 @@ describe("AsyncRequest", () => {
       };
 
       expect(reducer({ fetching: true }, action)).toEqual({
-        value: 30,
+        payload: 30,
         fetching: false,
       });
 
-      expect(reducer({ value: 10, fetching: true }, action)).toEqual({
-        value: 30,
+      expect(reducer({ payload: 10, fetching: true }, action)).toEqual({
+        payload: 30,
         fetching: false,
       });
 
       expect(reducer({ error, fetching: true }, action)).toEqual({
-        value: 30,
+        payload: 30,
         fetching: false,
       });
 
-      expect(reducer({ error, value: 10, fetching: true }, action)).toEqual({
-        value: 30,
+      expect(reducer({ error, payload: 10, fetching: true }, action)).toEqual({
+        payload: 30,
         fetching: false,
       });
     });
@@ -121,8 +121,8 @@ describe("AsyncRequest", () => {
         error: actionError,
       });
 
-      expect(reducer({ value: 10, fetching: true }, action)).toEqual({
-        value: 10,
+      expect(reducer({ payload: 10, fetching: true }, action)).toEqual({
+        payload: 10,
         fetching: false,
         error: actionError,
       });
@@ -133,9 +133,9 @@ describe("AsyncRequest", () => {
       });
 
       expect(
-        reducer({ value: 10, fetching: true, error: stateError }, action),
+        reducer({ payload: 10, fetching: true, error: stateError }, action),
       ).toEqual({
-        value: 10,
+        payload: 10,
         fetching: false,
         error: actionError,
       });
@@ -156,7 +156,7 @@ describe("AsyncRequest", () => {
         fetching: false,
       });
 
-      expect(reducer({ value: 10, fetching: true }, action)).toEqual({
+      expect(reducer({ payload: 10, fetching: true }, action)).toEqual({
         fetching: false,
       });
 
@@ -164,7 +164,7 @@ describe("AsyncRequest", () => {
         fetching: false,
       });
 
-      expect(reducer({ error, value: 10, fetching: true }, action)).toEqual({
+      expect(reducer({ error, payload: 10, fetching: true }, action)).toEqual({
         fetching: false,
       });
     });
@@ -189,8 +189,8 @@ describe("AsyncRequest", () => {
         ),
       ).toEqual({ fetching: true });
 
-      expect(reducer({ value: 10, fetching: true }, action)).toEqual({
-        value: 10,
+      expect(reducer({ payload: 10, fetching: true }, action)).toEqual({
+        payload: 10,
         fetching: true,
       });
 
@@ -199,9 +199,9 @@ describe("AsyncRequest", () => {
         fetching: true,
       });
 
-      expect(reducer({ error, value: 10, fetching: true }, action)).toEqual({
+      expect(reducer({ error, payload: 10, fetching: true }, action)).toEqual({
         error,
-        value: 10,
+        payload: 10,
         fetching: true,
       });
     });
@@ -265,7 +265,7 @@ describe("AsyncRequest", () => {
         meta: { id: 1 },
       } as FulfillAction<number, ActionMeta>);
 
-      expect(state).toEqual({ 1: { fetching: false, value: 10 } });
+      expect(state).toEqual({ 1: { fetching: false, payload: 10 } });
 
       state = reducer(state, {
         payload: 20,
@@ -274,7 +274,7 @@ describe("AsyncRequest", () => {
       } as FulfillAction<number, ActionMeta>);
 
       expect(state).toEqual({
-        1: { fetching: false, value: 10 },
+        1: { fetching: false, payload: 10 },
         2: { fetching: true },
       });
 
@@ -288,7 +288,7 @@ describe("AsyncRequest", () => {
       } as RejectAction<ActionMeta>);
 
       expect(state).toEqual({
-        1: { fetching: false, value: 10 },
+        1: { fetching: false, payload: 10 },
         2: { fetching: false, error },
       });
 
@@ -298,7 +298,7 @@ describe("AsyncRequest", () => {
       } as PerformAction<ActionMeta>);
 
       expect(state).toEqual({
-        1: { fetching: false, value: 10 },
+        1: { fetching: false, payload: 10 },
         2: { fetching: true, error },
       });
 
@@ -309,7 +309,7 @@ describe("AsyncRequest", () => {
       } as FulfillAction<number, ActionMeta>);
 
       expect(state).toEqual({
-        1: { fetching: false, value: 10 },
+        1: { fetching: false, payload: 10 },
         2: { fetching: true, error },
       });
     });

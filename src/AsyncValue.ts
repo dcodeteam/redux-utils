@@ -9,7 +9,7 @@ export function getInitialAsyncValue<V>(): AsyncValue<V> {
 }
 
 export interface AsyncValue<V = {}> {
-  readonly value?: V;
+  readonly payload?: V;
   readonly error?: Error;
   readonly fetching: boolean;
 }
@@ -31,8 +31,8 @@ export function createAsyncValueReducer<V>(
       const { payload } = action as FulfillAction<V>;
 
       return update(state, {
+        payload,
         error: DELETE,
-        value: payload,
         fetching: false,
       });
     }
