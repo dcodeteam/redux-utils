@@ -6,8 +6,11 @@ import {
   createFulfillAction,
   createPerformAction,
   createRejectAction,
+  getAsyncValueError,
+  getAsyncValuePayload,
   getInitialAsyncRequest,
   getInitialAsyncValue,
+  isAsyncValueFetching,
   isFulfillAction,
   isPerformAction,
   isRejectAction,
@@ -26,6 +29,9 @@ describe("index", () => {
     expect(typeof getInitialAsyncRequest).toBe("function");
     expect(typeof createAsyncRequestReducer).toBe("function");
 
+    expect(typeof getAsyncValueError).toBe("function");
+    expect(typeof getAsyncValuePayload).toBe("function");
+    expect(typeof isAsyncValueFetching).toBe("function");
     expect(typeof getInitialAsyncValue).toBe("function");
     expect(typeof createAsyncValueReducer).toBe("function");
     expect(typeof createAsyncValueDictReducer).toBe("function");

@@ -18,6 +18,9 @@ export {
 
 export {
   AsyncValue,
+  getAsyncValueError,
+  getAsyncValuePayload,
+  isAsyncValueFetching,
   getInitialAsyncValue,
   createAsyncValueReducer,
   createAsyncValueDictReducer,
