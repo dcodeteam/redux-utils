@@ -1,4 +1,4 @@
-import { PersistConfig, Transform, createTransform } from "redux-persist";
+import { PersistConfig, Transform } from "redux-persist";
 
 import { PlainObject } from "../core/types";
 import {
@@ -56,25 +56,25 @@ export class PersistConfigBuilder<S extends PlainObject> {
       "PersistConfigBuilder: `config` expected to be defined.",
     );
 
+    const { in: inbound, out: outbound } = config;
+
     invariant(
-      isFunction(config.in),
+      isFunction(inbound),
       "PersistConfigBuilder: `config.in` expected to be a function.",
     );
 
     invariant(
-      isFunction(config.out),
+      isFunction(outbound),
       "PersistConfigBuilder: `config.out` expected to be a function.",
     );
 
     this.whitelistKeys(childKey);
 
-    this.transforms.push(
-      createTransform<S[K], any>(
-        config.in,
-        raw => config.out(raw) || this.initialState[childKey],
-        { whitelist: [String(childKey)] },
-      ),
-    );
+    this.transforms.push({
+      in: (state: S[K], key) => (key !== childKey ? state : inbound(state)),
+      out: (raw, key): S[K] =>
+        key !== childKey ? raw : outbound(raw) || this.initialState[childKey],
+    });
 
     return this;
   }
