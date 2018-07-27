@@ -1,6 +1,6 @@
 import { Subject } from "rxjs";
 
-import { RejectAction } from "../../core/AsyncActions";
+import { RejectAction } from "../..";
 import { mapToAction } from "../ObservableAction";
 
 describe("ObservableAction", () => {
