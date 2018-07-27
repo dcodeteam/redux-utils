@@ -13,6 +13,7 @@
     "node": ">=8.0.0"
   },
   "jest": {
+    "testEnvironment": "node",
     "setupFiles": [
       "<rootDir>/config/jest.js"
     ],
