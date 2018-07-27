@@ -26,10 +26,7 @@ export function createPerformAction<M>(
   type: string,
   meta: M,
 ): PerformAction<M> {
-  return {
-    meta,
-    type,
-  };
+  return { meta, type };
 }
 
 export function isFulfillAction(
@@ -48,11 +45,7 @@ export function createFulfillAction<P, M = any>(
   payload: P,
   meta: M,
 ): FulfillAction<P, M> {
-  return {
-    meta,
-    type,
-    payload,
-  };
+  return { meta, type, payload };
 }
 
 export function isRejectAction(action: AnyAction): action is RejectAction {
@@ -69,10 +62,5 @@ export function createRejectAction<M = any>(
   error: Error,
   meta: M,
 ): RejectAction<M> {
-  return {
-    meta,
-    type,
-    error: true,
-    payload: error,
-  };
+  return { meta, type, error: true, payload: error };
 }
