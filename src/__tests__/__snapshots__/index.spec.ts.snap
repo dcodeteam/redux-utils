@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index public api 1`] = `
+Object {
+  "AsyncRequest": undefined,
+  "AsyncValue": undefined,
+  "Dict": undefined,
+  "FulfillAction": undefined,
+  "PerformAction": undefined,
+  "ReducerBuilder": [Function],
+  "RejectAction": undefined,
+  "SubReducer": undefined,
+  "createAsyncRequestReducer": [Function],
+  "createAsyncValueDictReducer": [Function],
+  "createAsyncValueReducer": [Function],
+  "createFulfillAction": [Function],
+  "createPerformAction": [Function],
+  "createRejectAction": [Function],
+  "getAsyncValueError": [Function],
+  "getAsyncValuePayload": [Function],
+  "getInitialAsyncRequest": [Function],
+  "getInitialAsyncValue": [Function],
+  "isAsyncValueFetching": [Function],
+  "isFulfillAction": [Function],
+  "isPerformAction": [Function],
+  "isRejectAction": [Function],
+  "mapToAction": [Function],
+}
+`;
