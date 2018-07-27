@@ -1,3 +1,5 @@
+export { Dict, SubReducer } from "./core/types";
+
 export {
   FulfillAction,
   PerformAction,
@@ -26,8 +28,6 @@ export {
   createAsyncValueDictReducer,
 } from "./core/AsyncValue";
 
-export { mapToAction } from "./observable/ObservableAction";
-
 export { ReducerBuilder } from "./core/ReducerBuilder";
 
-export { Dict, SubReducer } from "./core/types";
+export { mapToAction } from "./observable/ObservableAction";
