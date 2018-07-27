@@ -19,16 +19,25 @@
     "transform": {
       ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
-    "collectCoverageFrom": [
-      "src/**/*.ts"
-    ],
     "testMatch": [
       "**/src/**/*.spec.ts"
     ],
     "moduleFileExtensions": [
       "ts",
       "js"
-    ]
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts",
+      "!src/**/__tests__/**/*.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    }
   },
   "scripts": {
     "ci": "yarn lint && yarn dts && yarn cover --ci",
