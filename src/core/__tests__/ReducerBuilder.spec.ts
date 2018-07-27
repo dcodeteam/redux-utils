@@ -20,15 +20,22 @@ describe("ReducerBuilder", () => {
   mockConsole({ error: consoleError });
 
   test("init validation", () => {
-    expect(() => new ReducerBuilder([])).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // eslint-disable-next-line no-new
+      new ReducerBuilder([]);
+    }).toThrowErrorMatchingSnapshot();
 
-    expect(
-      () => new ReducerBuilder(null as any),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      // eslint-disable-next-line no-new
+      new ReducerBuilder(null);
+    }).toThrowErrorMatchingSnapshot();
 
-    expect(
-      () => new ReducerBuilder(undefined as any),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      // eslint-disable-next-line no-new
+      new ReducerBuilder(undefined);
+    }).toThrowErrorMatchingSnapshot();
 
     expect(consoleError).not.toBeCalled();
   });
@@ -44,13 +51,15 @@ describe("ReducerBuilder", () => {
   test("sub reducer validation", () => {
     const builder = new ReducerBuilder({});
 
-    expect(() =>
-      builder.addSubReducer(null as any),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addSubReducer(null);
+    }).toThrowErrorMatchingSnapshot();
 
-    expect(() =>
-      builder.addSubReducer(undefined as any),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addSubReducer(undefined);
+    }).toThrowErrorMatchingSnapshot();
 
     expect(consoleError).not.toBeCalled();
   });
@@ -69,13 +78,15 @@ describe("ReducerBuilder", () => {
   test("actions reducer validation", () => {
     const builder = new ReducerBuilder({});
 
-    expect(() =>
-      builder.addActionsSubReducer(null as any, identity),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addActionsSubReducer(null, identity);
+    }).toThrowErrorMatchingSnapshot();
 
-    expect(() =>
-      builder.addActionsSubReducer(undefined as any, identity),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addActionsSubReducer(undefined, identity);
+    }).toThrowErrorMatchingSnapshot();
 
     expect(consoleError).not.toBeCalled();
 
@@ -83,13 +94,15 @@ describe("ReducerBuilder", () => {
 
     expect(consoleError.mock.calls).toMatchSnapshot();
 
-    expect(() =>
-      builder.addActionsSubReducer(["foo"], null as any),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addActionsSubReducer(["foo"], null);
+    }).toThrowErrorMatchingSnapshot();
 
-    expect(() =>
-      builder.addActionsSubReducer(["foo"], undefined as any),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addActionsSubReducer(["foo"], undefined);
+    }).toThrowErrorMatchingSnapshot();
 
     expect(consoleError).not.toBeCalled();
   });
@@ -125,21 +138,25 @@ describe("ReducerBuilder", () => {
   test("child reducer validation", () => {
     const builder = new ReducerBuilder(getCounterIntialState());
 
-    expect(() =>
-      builder.addChildSubReducer(null as any, identity),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addChildSubReducer(null, identity);
+    }).toThrowErrorMatchingSnapshot();
 
-    expect(() =>
-      builder.addChildSubReducer(undefined as any, identity),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addChildSubReducer(undefined, identity);
+    }).toThrowErrorMatchingSnapshot();
 
-    expect(() =>
-      builder.addChildSubReducer("counter", null as any),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addChildSubReducer("counter", null);
+    }).toThrowErrorMatchingSnapshot();
 
-    expect(() =>
-      builder.addChildSubReducer("counter", undefined as any),
-    ).toThrowErrorMatchingSnapshot();
+    expect(() => {
+      // @ts-ignore
+      builder.addChildSubReducer("counter", undefined);
+    }).toThrowErrorMatchingSnapshot();
 
     expect(consoleError).not.toBeCalled();
   });
