@@ -14,20 +14,9 @@ import {
 
 describe("AsyncAction", () => {
   const actions = {
-    basic: {
-      type: "foo",
-    } as Action,
-
-    perform: {
-      meta: {},
-      type: "foo",
-    } as PerformAction,
-
-    fulfill: {
-      meta: {},
-      type: "foo",
-      payload: 10,
-    } as FulfillAction<number>,
+    basic: { type: "foo" } as Action,
+    perform: { meta: {}, type: "foo" } as PerformAction,
+    fulfill: { meta: {}, type: "foo", payload: 10 } as FulfillAction<number>,
 
     reject: {
       meta: {},
