@@ -8,10 +8,7 @@ import {
   isPlainObject,
   warning,
 } from "../internal/utils";
-import { SubReducer } from "./types";
-
-// eslint-disable-next-line typescript/no-type-alias,typescript/no-explicit-any
-type PlainObject = { [name: string]: any };
+import { PlainObject, SubReducer } from "./types";
 
 export class ReducerBuilder<S extends PlainObject> {
   protected readonly initialState: S;
