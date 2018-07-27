@@ -1,23 +1,24 @@
+import { PlainObject } from "../core/types";
+
 export function isNumber(value: null | number | undefined): value is number {
   return typeof value === "number";
 }
 
-// eslint-disable-next-line typescript/no-explicit-any
-function isObjectType(value: any, type: string): boolean {
+function isObjectType<T>(value: T, type: string): boolean {
   return Object.prototype.toString.call(value) === `[object ${type}]`;
 }
 
-// eslint-disable-next-line typescript/no-explicit-any
-export function isArray(value: any): value is Array<any> {
+export function isArray<T>(value: null | undefined | T[]): value is T[] {
   return isObjectType(value, "Array");
 }
 
-// eslint-disable-next-line typescript/no-explicit-any
-export function isPlainObject(value: any): value is object {
+export function isPlainObject(
+  value: null | undefined | PlainObject,
+): value is PlainObject {
   return isObjectType(value, "Object");
 }
 
-export function isFunction<T>(value: T | Function): value is Function {
+export function isFunction<T>(value: null | undefined | T): value is T {
   return typeof value === "function";
 }
 
@@ -63,9 +64,9 @@ export function invariant(
     const message = formatMessage(format, args);
     const error = new Error(message);
 
+    // @ts-ignore
+    error.framesToPop = 1;
     error.name = "Invariant Violation";
-    // eslint-disable-next-line typescript/no-explicit-any
-    (error as any).framesToPop = 1;
 
     throw error;
   }
