@@ -36,4 +36,4 @@ deploy:
     tags: true
     branch: master
     repo: dcodeteam/redux-utils
-    condition: $TRAVIS_NODE_VERSION = 8
+    condition: "$TRAVIS_NODE_VERSION = 8"
