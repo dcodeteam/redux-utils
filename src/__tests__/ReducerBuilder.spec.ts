@@ -1,5 +1,5 @@
-/* eslint-disable no-console */
 import { ReducerBuilder } from "../ReducerBuilder";
+import { mockConsole } from "./mockConsole";
 
 interface CounterState {
   readonly counter: number;
@@ -15,12 +15,9 @@ function counterReducer(state: CounterState): CounterState {
 
 describe("ReducerBuilder", () => {
   const identity = <T>(s: T): T => s;
+  const consoleError = jest.fn();
 
-  const actualConsoleError = console.error;
-
-  afterAll(() => {
-    console.error = actualConsoleError;
-  });
+  mockConsole({ error: consoleError });
 
   test("init validation", () => {
     expect(() => new ReducerBuilder([])).toThrowErrorMatchingSnapshot();
@@ -32,16 +29,16 @@ describe("ReducerBuilder", () => {
     expect(
       () => new ReducerBuilder(undefined as any),
     ).toThrowErrorMatchingSnapshot();
+
+    expect(consoleError).not.toBeCalled();
   });
 
   test("build without sub reducers", () => {
     const builder = new ReducerBuilder({});
-    const mockLogger = jest.fn();
 
-    console.error = mockLogger;
     builder.build();
 
-    expect(mockLogger.mock.calls).toMatchSnapshot();
+    expect(consoleError.mock.calls).toMatchSnapshot();
   });
 
   test("sub reducer validation", () => {
@@ -54,6 +51,8 @@ describe("ReducerBuilder", () => {
     expect(() =>
       builder.addSubReducer(undefined as any),
     ).toThrowErrorMatchingSnapshot();
+
+    expect(consoleError).not.toBeCalled();
   });
 
   test("sub reducer build", () => {
@@ -63,13 +62,12 @@ describe("ReducerBuilder", () => {
 
     expect(reducer(undefined, { type: "foo" })).toEqual({ counter: 1 });
     expect(reducer({ counter: 1 }, { type: "foo" })).toEqual({ counter: 2 });
+
+    expect(consoleError).not.toBeCalled();
   });
 
   test("actions reducer validation", () => {
     const builder = new ReducerBuilder({});
-    const mockLogger = jest.fn();
-
-    console.error = mockLogger;
 
     expect(() =>
       builder.addActionsSubReducer(null as any, identity),
@@ -79,11 +77,11 @@ describe("ReducerBuilder", () => {
       builder.addActionsSubReducer(undefined as any, identity),
     ).toThrowErrorMatchingSnapshot();
 
-    expect(mockLogger).not.toBeCalled();
+    expect(consoleError).not.toBeCalled();
 
     builder.addActionsSubReducer([], identity);
 
-    expect(mockLogger.mock.calls).toMatchSnapshot();
+    expect(consoleError.mock.calls).toMatchSnapshot();
 
     expect(() =>
       builder.addActionsSubReducer(["foo"], null as any),
@@ -92,11 +90,11 @@ describe("ReducerBuilder", () => {
     expect(() =>
       builder.addActionsSubReducer(["foo"], undefined as any),
     ).toThrowErrorMatchingSnapshot();
+
+    expect(consoleError).not.toBeCalled();
   });
 
   test("actions reducer with empty actions", () => {
-    console.error = jest.fn();
-
     const reducer = new ReducerBuilder(getCounterIntialState())
       .addActionsSubReducer([], counterReducer)
       .build();
@@ -106,6 +104,8 @@ describe("ReducerBuilder", () => {
 
     expect(reducer({ counter: 1 }, { type: "foo" })).toEqual({ counter: 1 });
     expect(reducer({ counter: 1 }, { type: "bar" })).toEqual({ counter: 1 });
+
+    expect(consoleError.mock.calls).toMatchSnapshot();
   });
 
   test("actions reducer with actions", () => {
@@ -118,6 +118,8 @@ describe("ReducerBuilder", () => {
 
     expect(reducer({ counter: 1 }, { type: "foo" })).toEqual({ counter: 2 });
     expect(reducer({ counter: 1 }, { type: "bar" })).toEqual({ counter: 1 });
+
+    expect(consoleError).not.toBeCalled();
   });
 
   test("child reducer validation", () => {
@@ -138,6 +140,8 @@ describe("ReducerBuilder", () => {
     expect(() =>
       builder.addChildSubReducer("counter", undefined as any),
     ).toThrowErrorMatchingSnapshot();
+
+    expect(consoleError).not.toBeCalled();
   });
 
   test("child reducer", () => {
@@ -150,5 +154,7 @@ describe("ReducerBuilder", () => {
 
     expect(reducer({ counter: 1 }, { type: "foo" })).toEqual({ counter: 2 });
     expect(reducer({ counter: 1 }, { type: "bar" })).toEqual({ counter: 2 });
+
+    expect(consoleError).not.toBeCalled();
   });
 });

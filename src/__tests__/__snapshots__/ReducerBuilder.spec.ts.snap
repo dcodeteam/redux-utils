@@ -10,6 +10,14 @@ exports[`ReducerBuilder actions reducer validation 4`] = `"ReducerBuilder: \`red
 
 exports[`ReducerBuilder actions reducer validation 5`] = `"ReducerBuilder: \`reducer\` expected to be a function."`;
 
+exports[`ReducerBuilder actions reducer with empty actions 1`] = `
+Array [
+  Array [
+    "ReducerBuilder: final reducer has no sub reducers.",
+  ],
+]
+`;
+
 exports[`ReducerBuilder build without sub reducers 1`] = `
 Array [
   Array [
