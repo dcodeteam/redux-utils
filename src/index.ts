@@ -8,13 +8,13 @@ export {
   createPerformAction,
   createRejectAction,
   isPerformAction,
-} from "./AsyncActions";
+} from "./core/AsyncActions";
 
 export {
   AsyncRequest,
   getInitialAsyncRequest,
   createAsyncRequestReducer,
-} from "./AsyncRequest";
+} from "./core/AsyncRequest";
 
 export {
   AsyncValue,
@@ -24,10 +24,10 @@ export {
   getInitialAsyncValue,
   createAsyncValueReducer,
   createAsyncValueDictReducer,
-} from "./AsyncValue";
+} from "./core/AsyncValue";
 
-export { mapToAction } from "./ObservableAction";
+export { mapToAction } from "./observable/ObservableAction";
 
-export { ReducerBuilder } from "./ReducerBuilder";
+export { ReducerBuilder } from "./core/ReducerBuilder";
 
-export { Dict, SubReducer } from "./types";
+export { Dict, SubReducer } from "./core/types";

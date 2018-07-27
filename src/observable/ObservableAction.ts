@@ -6,7 +6,7 @@ import {
   RejectAction,
   createFulfillAction,
   createRejectAction,
-} from "./AsyncActions";
+} from "../core/AsyncActions";
 
 export function mapToAction<M, P>(
   meta: M,

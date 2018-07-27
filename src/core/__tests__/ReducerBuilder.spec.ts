@@ -1,5 +1,5 @@
+import { mockConsole } from "../../__tests__/mockConsole";
 import { ReducerBuilder } from "../ReducerBuilder";
-import { mockConsole } from "./mockConsole";
 
 interface CounterState {
   readonly counter: number;

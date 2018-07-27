@@ -7,7 +7,7 @@ import {
   isFunction,
   isPlainObject,
   warning,
-} from "./internal/utils";
+} from "../internal/utils";
 import { SubReducer } from "./types";
 
 // eslint-disable-next-line typescript/no-type-alias,typescript/no-explicit-any
