@@ -63,12 +63,16 @@
     "redux": "^4.0.0",
     "rxjs": "^6.0.0"
   },
+  "optionalDependencies": {
+    "redux-persist": "^5.10.0"
+  },
   "devDependencies": {
     "@dc0de/eslint-config": "^0.1.2",
     "@dc0de/eslint-config-node": "^0.1.2",
     "@dc0de/js-scripts": "^0.1.1",
     "@types/jest": "^23.1.2",
     "@types/node": "^10.3.6",
+    "@types/react": "^16.4.7",
     "codecov": "^3.0.2",
     "eslint": "^4.19.1",
     "jest": "^23.2.0",

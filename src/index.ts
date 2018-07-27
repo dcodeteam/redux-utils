@@ -31,3 +31,11 @@ export {
 export { ReducerBuilder } from "./core/ReducerBuilder";
 
 export { mapToAction } from "./observable/ObservableAction";
+
+export {
+  TransformConfig,
+  PersistConfigBuilder,
+} from "./persist/PersistConfigBuilder";
+
+export { createExpireTransformConfig } from "./persist/ExpireTransform";
+export { createVersionTransformConfig } from "./persist/VersionTransform";

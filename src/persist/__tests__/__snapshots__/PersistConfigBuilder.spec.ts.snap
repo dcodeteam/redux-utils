@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersistConfigBuilder build without whitelisted keys 1`] = `
+Array [
+  Array [
+    "PersistConfigBuilder: persist config has not whitelisted keys.",
+  ],
+]
+`;
+
+exports[`PersistConfigBuilder child transform validation 1`] = `"PersistConfigBuilder: \`childKey\` expected to be defined."`;
+
+exports[`PersistConfigBuilder child transform validation 2`] = `"PersistConfigBuilder: \`childKey\` expected to be defined."`;
+
+exports[`PersistConfigBuilder child transform validation 3`] = `"PersistConfigBuilder: \`config\` expected to be defined."`;
+
+exports[`PersistConfigBuilder child transform validation 4`] = `"PersistConfigBuilder: \`config\` expected to be defined."`;
+
+exports[`PersistConfigBuilder child transform validation 5`] = `"PersistConfigBuilder: \`config\` expected to be defined."`;
+
+exports[`PersistConfigBuilder child transform validation 6`] = `"PersistConfigBuilder: \`config.in\` expected to be a function."`;
+
+exports[`PersistConfigBuilder child transform validation 7`] = `"PersistConfigBuilder: \`config.out\` expected to be a function."`;
+
+exports[`PersistConfigBuilder child transform validation 8`] = `"PersistConfigBuilder: \`config.in\` expected to be a function."`;
+
+exports[`PersistConfigBuilder init validation 1`] = `"ReducerBuilder: \`initialState\` expected to be a plain object."`;
+
+exports[`PersistConfigBuilder init validation 2`] = `"ReducerBuilder: \`initialState\` expected to be a plain object."`;
+
+exports[`PersistConfigBuilder init validation 3`] = `"ReducerBuilder: \`initialState\` expected to be a plain object."`;

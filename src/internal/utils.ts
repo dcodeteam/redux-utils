@@ -1,3 +1,7 @@
+export function isNumber(value: null | number | undefined): value is number {
+  return typeof value === "number";
+}
+
 // eslint-disable-next-line typescript/no-explicit-any
 function isObjectType(value: any, type: string): boolean {
   return Object.prototype.toString.call(value) === `[object ${type}]`;

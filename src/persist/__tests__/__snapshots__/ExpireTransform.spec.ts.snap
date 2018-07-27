@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExpireTransform init validation 1`] = `"createExpireTransformConfig: \`expireAfter\` expected to be a positive number."`;
+
+exports[`ExpireTransform init validation 2`] = `"createExpireTransformConfig: \`expireAfter\` expected to be a positive number."`;
+
+exports[`ExpireTransform init validation 3`] = `"createExpireTransformConfig: \`now\` expected to be a function."`;

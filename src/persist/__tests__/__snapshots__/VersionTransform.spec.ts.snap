@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VersionTransform init validation 1`] = `"createVersionTransformConfig: \`version\` expected to be defined."`;
+
+exports[`VersionTransform init validation 2`] = `"createVersionTransformConfig: \`version\` expected to be defined."`;
