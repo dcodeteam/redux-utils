@@ -22,7 +22,7 @@ module.exports = {
   },
   plugins: [
     typescript({ clean: true, tsconfig: "./tsconfig.es.json" }),
-    replace({ values: { "rxjs/": "rxjs/_esm5/" } }),
+    replace({ values: { rxjs: "rxjs/_esm5" } }),
     prettier({ parser: "babylon" }),
   ],
 };
