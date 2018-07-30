@@ -30,8 +30,18 @@ export class PersistConfigBuilder<S extends PlainObject> {
     this.initialState = initialState;
   }
 
+  /** @deprecated - use PersistConfigBuilder#whitelistChildren */
   public whitelistKeys(...keys: Array<keyof S>): this {
-    keys.forEach(x => {
+    warning(
+      false,
+      "`PersistConfigBuilder#whitelistKeys` is deprecated in favor of `PersistConfigBuilder#whitelistChildren`.",
+    );
+
+    return this.whitelistChildren(...keys);
+  }
+
+  public whitelistChildren(...childKeys: Array<keyof S>): this {
+    childKeys.forEach(x => {
       const key = String(x);
 
       if (this.whitelist.indexOf(key) === -1) {
@@ -42,38 +52,59 @@ export class PersistConfigBuilder<S extends PlainObject> {
     return this;
   }
 
+  /** @deprecated - use PersistConfigBuilder#addChildTransforms */
   public addChildTransform<K extends keyof S>(
     childKey: K,
     config: TransformConfig<S[K]>,
+  ): this {
+    warning(
+      false,
+      "`PersistConfigBuilder#addChildTransform` is deprecated in favor of `PersistConfigBuilder#addChildTransforms`.",
+    );
+
+    return this.addChildTransforms(childKey, config);
+  }
+
+  public addChildTransforms<K extends keyof S>(
+    childKey: K,
+    ...configs: Array<TransformConfig<S[K]>>
   ): this {
     invariant(
       childKey != null,
       "PersistConfigBuilder: `childKey` expected to be defined.",
     );
 
-    invariant(
-      config != null,
-      "PersistConfigBuilder: `config` expected to be defined.",
-    );
+    const { [childKey]: childState } = this.initialState;
 
-    const { in: inbound, out: outbound } = config;
+    this.whitelistChildren(childKey);
 
     invariant(
-      isFunction(inbound),
-      "PersistConfigBuilder: `config.in` expected to be a function.",
+      configs.length > 0,
+      "PersistConfigBuilder: at least one transform should be passed.",
     );
 
-    invariant(
-      isFunction(outbound),
-      "PersistConfigBuilder: `config.out` expected to be a function.",
-    );
+    configs.forEach(config => {
+      invariant(
+        config != null,
+        "PersistConfigBuilder: `config` expected to be defined.",
+      );
 
-    this.whitelistKeys(childKey);
+      const { in: inbound, out: outbound } = config;
 
-    this.transforms.push({
-      in: (state: S[K], key) => (key !== childKey ? state : inbound(state)),
-      out: (raw, key): S[K] =>
-        key !== childKey ? raw : outbound(raw) || this.initialState[childKey],
+      invariant(
+        isFunction(inbound),
+        "PersistConfigBuilder: `config.in` expected to be a function.",
+      );
+
+      invariant(
+        isFunction(outbound),
+        "PersistConfigBuilder: `config.out` expected to be a function.",
+      );
+
+      this.transforms.push({
+        in: (x: S[K], k) => (k !== childKey ? x : inbound(x)),
+        out: (x, k): S[K] => (k !== childKey ? x : outbound(x) || childState),
+      });
     });
 
     return this;

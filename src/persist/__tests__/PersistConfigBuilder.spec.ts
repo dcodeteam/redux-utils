@@ -30,14 +30,16 @@ describe("PersistConfigBuilder", () => {
     const config = new PersistConfigBuilder({}).build();
 
     expect(config).toBeTruthy();
+
+    expect(consoleError).toBeCalled();
     expect(consoleError.mock.calls).toMatchSnapshot();
   });
 
   test("duplicate whitelist keys", () => {
     const config = new PersistConfigBuilder({ foo: 1, bar: 2, baz: 3 })
-      .whitelistKeys("foo", "bar")
-      .whitelistKeys("bar", "baz")
-      .whitelistKeys("baz", "foo")
+      .whitelistChildren("foo", "bar")
+      .whitelistChildren("bar", "baz")
+      .whitelistChildren("baz", "foo")
       .build();
 
     expect(config.whitelist).toEqual(["foo", "bar", "baz"]);
@@ -50,42 +52,42 @@ describe("PersistConfigBuilder", () => {
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransform(null);
+      builder.addChildTransforms(null);
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransform(undefined);
+      builder.addChildTransforms(undefined);
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransform("foo");
+      builder.addChildTransforms("foo");
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransform("foo", null);
+      builder.addChildTransforms("foo", null);
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransform("foo", undefined);
+      builder.addChildTransforms("foo", undefined);
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransform("foo", {});
+      builder.addChildTransforms("foo", {});
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransform("foo", { in: () => {} });
+      builder.addChildTransforms("foo", { in: () => {} });
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransform("foo", { out: () => {} });
+      builder.addChildTransforms("foo", { out: () => {} });
     }).toThrowErrorMatchingSnapshot();
 
     expect(consoleError).not.toBeCalled();
@@ -97,7 +99,7 @@ describe("PersistConfigBuilder", () => {
       transforms,
       ...restConfigProps
     } = new PersistConfigBuilder({ foo: 1 })
-      .addChildTransform("foo", {
+      .addChildTransforms("foo", {
         in: x => JSON.stringify(x),
         out: x => JSON.parse(x),
       })
@@ -125,7 +127,7 @@ describe("PersistConfigBuilder", () => {
 
   test("empty child transform build", () => {
     const { whitelist, transforms } = new PersistConfigBuilder({ foo: 1 })
-      .addChildTransform("foo", {
+      .addChildTransforms("foo", {
         in: x => JSON.stringify(x),
         out: x => JSON.parse(x),
       })
@@ -140,5 +142,53 @@ describe("PersistConfigBuilder", () => {
     expect(transform.out(null, "foo")).toBe(1);
 
     expect(consoleError).not.toBeCalled();
+  });
+
+  test("multiple child transforms build", () => {
+    const { whitelist, transforms } = new PersistConfigBuilder({ foo: 1 })
+      .addChildTransforms(
+        "foo",
+        { in: x => x * 2, out: x => x / 2 },
+        { in: x => x + 10, out: x => x - 10 },
+      )
+      .build();
+
+    expect(transforms).toBeTruthy();
+    expect(whitelist).toEqual(["foo"]);
+
+    const [t1, t2] = transforms!;
+
+    expect(t1.in(1, "foo")).toBe(2);
+    expect(t1.out(2, "foo")).toBe(1);
+
+    expect(t2.in(1, "foo")).toBe(11);
+    expect(t2.out(11, "foo")).toBe(1);
+
+    expect(consoleError).not.toBeCalled();
+  });
+
+  test("deprecated `whitelistKeys`", () => {
+    const builder = new PersistConfigBuilder({ foo: 1 });
+
+    expect(consoleError).not.toBeCalled();
+
+    builder.whitelistKeys("foo");
+
+    expect(consoleError).toBeCalled();
+    expect(consoleError.mock.calls).toMatchSnapshot();
+  });
+
+  test("deprecated `addChildTransform`", () => {
+    const builder = new PersistConfigBuilder({ foo: 1 });
+
+    expect(consoleError).not.toBeCalled();
+
+    builder.addChildTransform("foo", {
+      in: x => JSON.stringify(x),
+      out: x => JSON.parse(x),
+    });
+
+    expect(consoleError).toBeCalled();
+    expect(consoleError.mock.calls).toMatchSnapshot();
   });
 });

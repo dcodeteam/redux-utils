@@ -12,7 +12,7 @@ exports[`PersistConfigBuilder child transform validation 1`] = `"PersistConfigBu
 
 exports[`PersistConfigBuilder child transform validation 2`] = `"PersistConfigBuilder: \`childKey\` expected to be defined."`;
 
-exports[`PersistConfigBuilder child transform validation 3`] = `"PersistConfigBuilder: \`config\` expected to be defined."`;
+exports[`PersistConfigBuilder child transform validation 3`] = `"PersistConfigBuilder: at least one transform should be passed."`;
 
 exports[`PersistConfigBuilder child transform validation 4`] = `"PersistConfigBuilder: \`config\` expected to be defined."`;
 
@@ -23,6 +23,22 @@ exports[`PersistConfigBuilder child transform validation 6`] = `"PersistConfigBu
 exports[`PersistConfigBuilder child transform validation 7`] = `"PersistConfigBuilder: \`config.out\` expected to be a function."`;
 
 exports[`PersistConfigBuilder child transform validation 8`] = `"PersistConfigBuilder: \`config.in\` expected to be a function."`;
+
+exports[`PersistConfigBuilder deprecated \`addChildTransform\` 1`] = `
+Array [
+  Array [
+    "\`PersistConfigBuilder#addChildTransform\` is deprecated in favor of \`PersistConfigBuilder#addChildTransforms\`.",
+  ],
+]
+`;
+
+exports[`PersistConfigBuilder deprecated \`whitelistKeys\` 1`] = `
+Array [
+  Array [
+    "\`PersistConfigBuilder#whitelistKeys\` is deprecated in favor of \`PersistConfigBuilder#whitelistChildren\`.",
+  ],
+]
+`;
 
 exports[`PersistConfigBuilder init validation 1`] = `"ReducerBuilder: \`initialState\` expected to be a plain object."`;
 
