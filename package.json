@@ -2,7 +2,7 @@
   "private": false,
   "name": "@dc0de/redux-utils",
   "sideEffects": false,
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Common utils for redux ecosystem",
   "main": "cjs/index.js",
   "module": "es/index.js",
