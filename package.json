@@ -5,6 +5,7 @@
   "version": "0.0.7",
   "description": "Common utils for redux ecosystem",
   "main": "lib/index.js",
+  "module": "es/index.js",
   "typings": "lib/index.d.ts",
   "repository": "https://github.com/dcodeteam/redux-utils.git",
   "author": "Umidbek Karimov <uma.karimov@gmail.com>",
