@@ -6,7 +6,7 @@
   "description": "Common utils for redux ecosystem",
   "main": "cjs/index.js",
   "module": "es/index.js",
-  "typings": "cjs/index.d.ts",
+  "typings": "typings/index.d.ts",
   "repository": "https://github.com/dcodeteam/redux-utils.git",
   "author": "Umidbek Karimov <uma.karimov@gmail.com>",
   "license": "MIT",
@@ -43,7 +43,7 @@
   },
   "scripts": {
     "ci": "yarn lint && yarn dts && yarn cover --ci",
-    "all": "yarn lint --fix && yarn dts && yarn cover",
+    "all": "yarn lint --fix && yarn dts && yarn cover && yarn build",
     "test": "jest",
     "cover": "yarn test --coverage",
     "codecov": "codecov -f ./coverage/lcov.info",

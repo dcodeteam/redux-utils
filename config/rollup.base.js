@@ -25,7 +25,11 @@ module.exports = function createRollupConfig({ target }) {
     plugins: [
       cleaner({ targets: [`./${target}/`] }),
 
-      typescript({ clean: true, tsconfig: `./tsconfig.${target}.json` }),
+      typescript({
+        clean: true,
+        useTsconfigDeclarationDir: true,
+        tsconfig: `./tsconfig.${target}.json`,
+      }),
 
       target === "es" && replace({ values: { rxjs: "rxjs/_esm5" } }),
 
