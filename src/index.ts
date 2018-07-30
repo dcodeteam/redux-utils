@@ -37,6 +37,5 @@ export {
   PersistConfigBuilder,
 } from "./persist/PersistConfigBuilder";
 
-export { composeTransforms } from "./persist/ComposeTransforms";
 export { createExpireTransformConfig } from "./persist/ExpireTransform";
 export { createVersionTransformConfig } from "./persist/VersionTransform";

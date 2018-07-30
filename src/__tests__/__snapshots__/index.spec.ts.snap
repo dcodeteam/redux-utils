@@ -12,7 +12,6 @@ Object {
   "RejectAction": undefined,
   "SubReducer": undefined,
   "TransformConfig": undefined,
-  "composeTransforms": [Function],
   "createAsyncRequestReducer": [Function],
   "createAsyncValueDictReducer": [Function],
   "createAsyncValueReducer": [Function],
