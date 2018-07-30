@@ -2,10 +2,8 @@
   // Use base config.
   "extends": "./tsconfig.json",
   // Exclude tests source directory.
-  "exclude": ["**/*.spec.ts"],
+  "exclude": ["**/__tests__/**/*.ts"],
   "compilerOptions": {
-    // Transpile to `lib` directory.
-    "outDir": "lib",
     // Support es5 for browsers.
     "target": "es5",
     // Create d.ts declarations.

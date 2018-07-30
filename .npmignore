@@ -13,4 +13,4 @@
 
 /tsconfig.json
 /tsconfig.es.json
-/tsconfig.lib.json
+/tsconfig.cjs.json

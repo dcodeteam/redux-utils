@@ -4107,6 +4107,12 @@ rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
   dependencies:
     glob "^7.0.5"
 
+rollup-plugin-cleaner@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-cleaner/-/rollup-plugin-cleaner-0.2.0.tgz#e9fb8d6b3b42a1c7566dee4c71f1302b45cfc108"
+  dependencies:
+    rimraf "^2.6.2"
+
 rollup-plugin-prettier@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-prettier/-/rollup-plugin-prettier-0.4.0.tgz#de3749c433fa1e0b2a2cf9a51534fa330dcc7d53"

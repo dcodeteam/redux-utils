@@ -2,10 +2,8 @@
   // Use base config.
   "extends": "./tsconfig.json",
   // Exclude tests source directory.
-  "exclude": ["**/*.spec.ts"],
+  "exclude": ["**/__tests__/**/*.ts"],
   "compilerOptions": {
-    // Transpile to `es` directory.
-    "outDir": "es",
     // Support es5 for browsers.
     "target": "es5",
     // Use es6 modules.

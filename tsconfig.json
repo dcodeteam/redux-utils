@@ -1,6 +1,6 @@
 {
   // Setup source directory.
-  "include": ["src/**/*"],
+  "include": ["src/**/*.ts"],
   "compilerOptions": {
     // Use dom and latest ES typings.
     "lib": ["dom", "es2018"],
