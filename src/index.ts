@@ -14,6 +14,12 @@ export {
 
 export {
   AsyncRequest,
+  getAsyncRequestError,
+  getAsyncRequestResponse,
+  isAsyncRequestPerformed,
+  isAsyncRequestPending,
+  isAsyncRequestFailed,
+  isAsyncRequestSucceed,
   getInitialAsyncRequest,
   createAsyncRequestReducer,
 } from "./core/AsyncRequest";

@@ -3,7 +3,13 @@ import { Action } from "redux";
 import { FulfillAction, PerformAction, RejectAction } from "../AsyncActions";
 import {
   createAsyncRequestReducer,
+  getAsyncRequestError,
+  getAsyncRequestResponse,
   getInitialAsyncRequest,
+  isAsyncRequestFailed,
+  isAsyncRequestPending,
+  isAsyncRequestPerformed,
+  isAsyncRequestSucceed,
 } from "../AsyncRequest";
 
 describe("AsyncRequest", () => {
@@ -436,6 +442,144 @@ describe("AsyncRequest", () => {
         requesting: true,
         requestFailed: false,
       });
+    });
+  });
+
+  describe("getAsyncRequestError", () => {
+    test("basics", () => {
+      const error = new Error("AsyncRequestError");
+
+      expect(getAsyncRequestError(undefined)).toBe(undefined);
+
+      expect(
+        getAsyncRequestError({
+          requested: false,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(undefined);
+
+      expect(
+        getAsyncRequestError({
+          error,
+          requested: false,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(error);
+    });
+  });
+
+  describe("getAsyncRequestResponse", () => {
+    test("basics", () => {
+      const response = {};
+
+      expect(getAsyncRequestResponse(undefined)).toBe(undefined);
+
+      expect(
+        getAsyncRequestResponse({
+          requested: false,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(undefined);
+
+      expect(
+        getAsyncRequestResponse({
+          response,
+          requested: false,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(response);
+    });
+  });
+
+  describe("isAsyncRequestPerformed", () => {
+    test("basics", () => {
+      expect(isAsyncRequestPerformed(undefined)).toBe(false);
+
+      expect(
+        isAsyncRequestPerformed({
+          requested: false,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(false);
+
+      expect(
+        isAsyncRequestPerformed({
+          requested: true,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(true);
+    });
+  });
+
+  describe("isAsyncRequestPending", () => {
+    test("basics", () => {
+      expect(isAsyncRequestPending(undefined)).toBe(false);
+
+      expect(
+        isAsyncRequestPending({
+          requested: false,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(false);
+
+      expect(
+        isAsyncRequestPending({
+          requested: false,
+          requesting: true,
+          requestFailed: false,
+        }),
+      ).toBe(true);
+    });
+  });
+
+  describe("isAsyncRequestFailed", () => {
+    test("basics", () => {
+      expect(isAsyncRequestFailed(undefined)).toBe(false);
+
+      expect(
+        isAsyncRequestFailed({
+          requested: false,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(false);
+
+      expect(
+        isAsyncRequestFailed({
+          requested: false,
+          requesting: false,
+          requestFailed: true,
+        }),
+      ).toBe(true);
+    });
+  });
+
+  describe("isAsyncRequestSucceed", () => {
+    test("basics", () => {
+      expect(isAsyncRequestSucceed(undefined)).toBe(false);
+
+      expect(
+        isAsyncRequestSucceed({
+          requested: false,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(false);
+
+      expect(
+        isAsyncRequestSucceed({
+          requested: true,
+          requesting: false,
+          requestFailed: false,
+        }),
+      ).toBe(true);
     });
   });
 });

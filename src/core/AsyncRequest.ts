@@ -62,3 +62,44 @@ export function createAsyncRequestReducer<V>(
     return state;
   };
 }
+
+export function getAsyncRequestError(
+  request: undefined | AsyncRequest,
+): undefined | Error {
+  return request && request.error;
+}
+
+export function getAsyncRequestResponse<T>(
+  request: undefined | AsyncRequest<T>,
+): undefined | T {
+  return request && request.response;
+}
+
+export function isAsyncRequestPerformed(
+  request: undefined | AsyncRequest,
+): boolean {
+  return Boolean(request && request.requested);
+}
+
+export function isAsyncRequestPending(
+  request: undefined | AsyncRequest,
+): boolean {
+  return Boolean(request && request.requesting);
+}
+
+export function isAsyncRequestFailed(
+  request: undefined | AsyncRequest,
+): boolean {
+  return Boolean(request && request.requestFailed);
+}
+
+export function isAsyncRequestSucceed(
+  request: undefined | AsyncRequest,
+): boolean {
+  return Boolean(
+    request &&
+      request.requested &&
+      !request.requesting &&
+      !request.requestFailed,
+  );
+}
