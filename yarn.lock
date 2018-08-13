@@ -1892,9 +1892,9 @@ ignore@^4.0.0, ignore@^4.0.2:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-4.0.3.tgz#e2d58c9654d75b542529fa28d80ac95b29e4f467"
 
-immupdate@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/immupdate/-/immupdate-1.2.0.tgz#19576ba1fdaf55c9a1d6586d0a21788699a21541"
+immupdate@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/immupdate/-/immupdate-1.2.1.tgz#818fb578ec17f64a57a7ddb72aaed9b52c7fa4e3"
 
 import-lazy@^3.1.0:
   version "3.1.0"
