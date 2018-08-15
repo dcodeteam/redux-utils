@@ -19,7 +19,7 @@
       "<rootDir>/config/jest.js"
     ],
     "transform": {
-      ".ts": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".ts": "ts-jest"
     },
     "testMatch": [
       "**/src/**/*.spec.ts"
