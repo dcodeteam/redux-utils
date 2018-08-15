@@ -79,8 +79,16 @@ export class PersistConfigBuilder<S extends PlainObject> {
       );
 
       this.transforms.push({
-        in: (x: S[K], k) => (k !== childKey ? x : inbound(x)),
-        out: (x, k): S[K] => (k !== childKey ? x : outbound(x) || childState),
+        in: (state: S[K], key) => (key !== childKey ? state : inbound(state)),
+        out: (raw, key): S[K] => {
+          if (key !== childKey) {
+            return raw;
+          }
+
+          const state = outbound(raw);
+
+          return state != null ? state : childState;
+        },
       });
     });
 

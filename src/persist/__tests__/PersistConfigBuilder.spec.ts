@@ -82,12 +82,16 @@ describe("PersistConfigBuilder", () => {
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransforms("foo", { in: () => {} });
+      builder.addChildTransforms("foo", {
+        in: () => {},
+      });
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransforms("foo", { out: () => {} });
+      builder.addChildTransforms("foo", {
+        out: () => {},
+      });
     }).toThrowErrorMatchingSnapshot();
 
     expect(consoleError).not.toBeCalled();
@@ -125,12 +129,9 @@ describe("PersistConfigBuilder", () => {
     expect(consoleError).not.toBeCalled();
   });
 
-  test("empty child transform build", () => {
+  test("out of nil and falsy values", () => {
     const { whitelist, transforms } = new PersistConfigBuilder({ foo: 1 })
-      .addChildTransforms("foo", {
-        in: x => JSON.stringify(x),
-        out: x => JSON.parse(x),
-      })
+      .addChildTransforms("foo", { in: x => x, out: x => x })
       .build();
 
     expect(transforms).toBeTruthy();
@@ -138,8 +139,17 @@ describe("PersistConfigBuilder", () => {
 
     const [transform] = transforms!;
 
-    expect(transform.in(null, "foo")).toBe("null");
-    expect(transform.out(null, "foo")).toBe(1);
+    const nilValues = [null, undefined];
+
+    nilValues.forEach(x => {
+      expect(transform.out(x, "foo")).toBe(1);
+    });
+
+    const falsyValues = [0, "", NaN, false];
+
+    falsyValues.forEach(x => {
+      expect(transform.out(x, "foo")).toBe(x);
+    });
 
     expect(consoleError).not.toBeCalled();
   });
