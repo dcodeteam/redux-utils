@@ -66,17 +66,24 @@
     "redux-persist": "^5.10.0"
   },
   "devDependencies": {
-    "@dc0de/eslint-config": "^0.1.2",
-    "@dc0de/eslint-config-node": "^0.1.2",
-    "@dc0de/js-scripts": "^0.1.1",
+    "@dc0de/eslint-config": "^0.2.4",
+    "@dc0de/eslint-config-base": "^0.2.0",
+    "@dc0de/eslint-config-node": "^0.2.2",
+    "@dc0de/js-scripts": "^0.1.10",
     "@types/jest": "^23.1.2",
     "@types/node": "^10.3.6",
     "@types/react": "^16.4.7",
     "codecov": "^3.0.2",
-    "eslint": "^4.19.1",
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.0",
+    "eslint-plugin-typescript": "^0.12.0",
     "immupdate": "^1.2.1",
     "jest": "^23.2.0",
     "opener": "^1.4.3",
+    "prettier": "^1.14.2",
     "redux": "^4.0.0",
     "rollup": "^0.63.4",
     "rollup-plugin-cleaner": "^0.2.0",
@@ -86,6 +93,7 @@
     "rxjs": "^6.2.1",
     "source-map-support": "^0.5.6",
     "ts-jest": "^23.1.2",
-    "typescript": "^3.0.1"
+    "typescript": "^2.9.0",
+    "typescript-eslint-parser": "^17.0.0"
   }
 }

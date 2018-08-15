@@ -1,5 +1,5 @@
 {
-  "extends": ["@dc0de/eslint-config-node"],
+  "extends": "@dc0de/eslint-config-node",
   "rules": {
     "node/no-unpublished-require": "off"
   }
