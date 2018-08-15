@@ -24,22 +24,6 @@ exports[`PersistConfigBuilder child transform validation 7`] = `"PersistConfigBu
 
 exports[`PersistConfigBuilder child transform validation 8`] = `"PersistConfigBuilder: \`config.in\` expected to be a function."`;
 
-exports[`PersistConfigBuilder deprecated \`addChildTransform\` 1`] = `
-Array [
-  Array [
-    "\`PersistConfigBuilder#addChildTransform\` is deprecated in favor of \`PersistConfigBuilder#addChildTransforms\`.",
-  ],
-]
-`;
-
-exports[`PersistConfigBuilder deprecated \`whitelistKeys\` 1`] = `
-Array [
-  Array [
-    "\`PersistConfigBuilder#whitelistKeys\` is deprecated in favor of \`PersistConfigBuilder#whitelistChildren\`.",
-  ],
-]
-`;
-
 exports[`PersistConfigBuilder init validation 1`] = `"ReducerBuilder: \`initialState\` expected to be a plain object."`;
 
 exports[`PersistConfigBuilder init validation 2`] = `"ReducerBuilder: \`initialState\` expected to be a plain object."`;

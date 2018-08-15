@@ -30,16 +30,6 @@ export class PersistConfigBuilder<S extends PlainObject> {
     this.initialState = initialState;
   }
 
-  /** @deprecated - use PersistConfigBuilder#whitelistChildren */
-  public whitelistKeys(...keys: Array<keyof S>): this {
-    warning(
-      false,
-      "`PersistConfigBuilder#whitelistKeys` is deprecated in favor of `PersistConfigBuilder#whitelistChildren`.",
-    );
-
-    return this.whitelistChildren(...keys);
-  }
-
   public whitelistChildren(...childKeys: Array<keyof S>): this {
     childKeys.forEach(x => {
       const key = String(x);
@@ -50,19 +40,6 @@ export class PersistConfigBuilder<S extends PlainObject> {
     });
 
     return this;
-  }
-
-  /** @deprecated - use PersistConfigBuilder#addChildTransforms */
-  public addChildTransform<K extends keyof S>(
-    childKey: K,
-    config: TransformConfig<S[K]>,
-  ): this {
-    warning(
-      false,
-      "`PersistConfigBuilder#addChildTransform` is deprecated in favor of `PersistConfigBuilder#addChildTransforms`.",
-    );
-
-    return this.addChildTransforms(childKey, config);
   }
 
   public addChildTransforms<K extends keyof S>(

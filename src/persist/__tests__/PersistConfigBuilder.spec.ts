@@ -166,29 +166,4 @@ describe("PersistConfigBuilder", () => {
 
     expect(consoleError).not.toBeCalled();
   });
-
-  test("deprecated `whitelistKeys`", () => {
-    const builder = new PersistConfigBuilder({ foo: 1 });
-
-    expect(consoleError).not.toBeCalled();
-
-    builder.whitelistKeys("foo");
-
-    expect(consoleError).toBeCalled();
-    expect(consoleError.mock.calls).toMatchSnapshot();
-  });
-
-  test("deprecated `addChildTransform`", () => {
-    const builder = new PersistConfigBuilder({ foo: 1 });
-
-    expect(consoleError).not.toBeCalled();
-
-    builder.addChildTransform("foo", {
-      in: x => JSON.stringify(x),
-      out: x => JSON.parse(x),
-    });
-
-    expect(consoleError).toBeCalled();
-    expect(consoleError.mock.calls).toMatchSnapshot();
-  });
 });
