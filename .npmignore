@@ -1,17 +1,5 @@
-/src
-/config
-/coverage
+*
 
-/.idea
-
-/.eslintrc
-/.gitignore
-/.npmignore
-/.prettierrc
-/.travis.yml
-
-/yarn.lock
-
-/tsconfig.json
-/tsconfig.es.json
-/tsconfig.cjs.json
+!/es/*
+!/cjs/*
+!/typings/*
