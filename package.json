@@ -4,9 +4,16 @@
   "sideEffects": false,
   "version": "0.0.12",
   "description": "Common utils for redux ecosystem",
-  "main": "cjs/index.js",
-  "module": "es/index.js",
+  "main": "redux-utils.cjs.js",
+  "module": "redux-utils.es.js",
+  "es2015": "redux-utils.es2015.js",
   "typings": "typings/index.d.ts",
+  "files": [
+    "typings/**",
+    "redux-utils.es.js",
+    "redux-utils.cjs.js",
+    "redux-utils.es2015.js"
+  ],
   "repository": "https://github.com/dcodeteam/redux-utils.git",
   "author": "Umidbek Karimov <uma.karimov@gmail.com>",
   "license": "MIT",
@@ -14,20 +21,18 @@
     "node": ">=8.0.0"
   },
   "scripts": {
-    "ci": "yarn lint && yarn dts && yarn cover --ci",
-    "all": "yarn lint --fix && yarn dts && yarn cover && yarn build",
+    "ci": "yarn lint && yarn tsc && yarn cover --ci",
+    "ci-fix": "yarn lint --fix && yarn tsc && yarn cover && yarn build",
     "test": "jest",
     "cover": "yarn test --coverage",
     "codecov": "codecov -f ./coverage/lcov.info",
-    "report": "opener ./coverage/lcov-report/index.html",
-    "dts": "tsc --noEmit",
     "lint": "stylotron lint",
-    "build": "yarn build:es && yarn build:cjs",
-    "build:es": "rollup -c ./config/rollup.es.js",
-    "build:cjs": "rollup -c ./config/rollup.cjs.js"
+    "build": "yarn build:bundle && yarn build:typings",
+    "build:bundle": "rollup -c rollup.config.js",
+    "build:typings": "rimraf typings && tsc --project tsconfig.typings.json"
   },
   "dependencies": {
-    "tslib": "^1.9.0"
+    "@babel/runtime": "^7.0.0"
   },
   "peerDependencies": {
     "immupdate": "^1.2.1",
@@ -39,6 +44,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-typescript": "^7.1.0",
     "@dc0de/eslint-config": "^0.4.10",
@@ -50,6 +56,7 @@
     "@types/react": "^16.4.7",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
+    "babel-plugin-module-resolver": "^3.1.1",
     "codecov": "^3.0.2",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -63,14 +70,12 @@
     "import-sort-style-module": "^5.0.0",
     "jest": "^23.0.0",
     "jest-circus": "^23.6.0",
-    "opener": "^1.4.3",
     "prettier": "^1.15.0",
     "redux": "^4.0.0",
+    "rimraf": "^2.6.3",
     "rollup": "^1.1.0",
-    "rollup-plugin-cleaner": "^0.2.0",
-    "rollup-plugin-prettier": "^0.5.0",
-    "rollup-plugin-replace": "^2.0.0",
-    "rollup-plugin-typescript2": "^0.18.1",
+    "rollup-plugin-babel": "^4.3.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
     "rxjs": "^6.2.1",
     "source-map-support": "^0.5.6",
     "stylotron": "^0.0.12",

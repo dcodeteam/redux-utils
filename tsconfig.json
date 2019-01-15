@@ -2,6 +2,8 @@
   // Setup source directory.
   "include": ["src/**/*.ts"],
   "compilerOptions": {
+    // Do not compile with TSC.
+    "noEmit": true,
     // Use dom and latest ES typings.
     "lib": ["dom", "es2018"],
     // Use for debugging and error tracking.

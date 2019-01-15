@@ -1,5 +1,6 @@
-/es
-/cjs
+/redux-utils.es.js
+/redux-utils.cjs.js
+/redux-utils.es2015.js
 /typings
 
 .idea
@@ -41,9 +42,6 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
-
-# TypeScript v1 declaration files
-typings/
 
 # Optional npm cache directory
 .npm
