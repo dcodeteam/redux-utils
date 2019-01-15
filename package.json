@@ -13,34 +13,6 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "jest": {
-    "testEnvironment": "node",
-    "setupFiles": [
-      "<rootDir>/config/jest.js"
-    ],
-    "transform": {
-      ".ts": "ts-jest"
-    },
-    "testMatch": [
-      "**/src/**/*.spec.ts"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "js"
-    ],
-    "collectCoverageFrom": [
-      "src/**/*.ts",
-      "!src/**/__tests__/**/*.ts"
-    ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 100,
-        "functions": 100,
-        "lines": 100,
-        "statements": 100
-      }
-    }
-  },
   "scripts": {
     "ci": "yarn lint && yarn dts && yarn cover --ci",
     "all": "yarn lint --fix && yarn dts && yarn cover && yarn build",
