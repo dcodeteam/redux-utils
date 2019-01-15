@@ -18,21 +18,27 @@ before_script:
 script:
   - yarn build
 
-after_success:
-  - if [[ $TRAVIS_NODE_VERSION == "10" ]]; then yarn codecov; fi
-
 branches:
   except:
     - "/^v\\d+\\.\\d+\\.\\d+$/"
 
 deploy:
-  provider: npm
-  skip_cleanup: true
-  email: uma.karimov@gmail.com
-  api_key:
-    secure: p36R4S/sVZLUbeUsk9z6O/baP69LlIkse+uvzm/U6QAlT4Uch1T3OU3TGuXqZ8LZRbIywrwPTjEHrb4rGIkOi0zkj8T3qa5xM+CmUXWOhxhoFDE9wl3u+D/f2BM+Jf0hoxchDT9YA/ym2jvJlvBdCj5B86T8if7YIYVUkyH76Z9CkUHWpANwXbnFtR1GC4M2/Y+oyc2+VNuFTRbZuZcjifdbeOmcnNer61MpNWUuf8pq/RTYAjGEAg0KUDftpExr/oajiDxEDJbGviGabNVekN2gzn4bEvReh3evxY2P7WDxk2NvT6C+g64AmTlfPgilLSX9Y9K81U5H/L0Ngb+jfKfh/Ch0gIpmkjEf3yVzzPmupzAyYmRVop/Jsp96wto2ZugOdnYYe3ns/PG0BUsojPukvun/1TV0NgAobFAaZln006s9GIOXk2+VhxwzUPhlzAnZCtKoSVOuivsAobsDwo1NUxNbHJZJSqU4BnHbtuxOs5pF+eW0Wl4m3ey48gR3YlMVWs9wYyBBTWFK5EiwMlWTrlCvHvGBr5Vn3y3TeD7OwfIqm8fM+L4kMMxolZi2o9R55IRXe+NOtxi1giHBbnuOTADg9b6oHNzCuaaRdQr1Vy9VxrUGSxum0UdtDvqpDPzCuIsbOprNvm8YJp8nD+TmXNq1xO6ONYj3Y65vMiI=
-  on:
-    tags: true
-    branch: master
-    repo: dcodeteam/redux-utils
-    condition: "$TRAVIS_NODE_VERSION = 10"
+  - provider: script
+    skip_cleanup: true
+    script: yarn codecov
+    on:
+      tags: false
+      node_js: "10"
+      branch: master
+      repo: dcodeteam/redux-utils
+
+  - provider: npm
+    skip_cleanup: true
+    email: uma.karimov@gmail.com
+    api_key:
+      secure: p36R4S/sVZLUbeUsk9z6O/baP69LlIkse+uvzm/U6QAlT4Uch1T3OU3TGuXqZ8LZRbIywrwPTjEHrb4rGIkOi0zkj8T3qa5xM+CmUXWOhxhoFDE9wl3u+D/f2BM+Jf0hoxchDT9YA/ym2jvJlvBdCj5B86T8if7YIYVUkyH76Z9CkUHWpANwXbnFtR1GC4M2/Y+oyc2+VNuFTRbZuZcjifdbeOmcnNer61MpNWUuf8pq/RTYAjGEAg0KUDftpExr/oajiDxEDJbGviGabNVekN2gzn4bEvReh3evxY2P7WDxk2NvT6C+g64AmTlfPgilLSX9Y9K81U5H/L0Ngb+jfKfh/Ch0gIpmkjEf3yVzzPmupzAyYmRVop/Jsp96wto2ZugOdnYYe3ns/PG0BUsojPukvun/1TV0NgAobFAaZln006s9GIOXk2+VhxwzUPhlzAnZCtKoSVOuivsAobsDwo1NUxNbHJZJSqU4BnHbtuxOs5pF+eW0Wl4m3ey48gR3YlMVWs9wYyBBTWFK5EiwMlWTrlCvHvGBr5Vn3y3TeD7OwfIqm8fM+L4kMMxolZi2o9R55IRXe+NOtxi1giHBbnuOTADg9b6oHNzCuaaRdQr1Vy9VxrUGSxum0UdtDvqpDPzCuIsbOprNvm8YJp8nD+TmXNq1xO6ONYj3Y65vMiI=
+    on:
+      tags: true
+      node_js: "10"
+      branch: master
+      repo: dcodeteam/redux-utils
