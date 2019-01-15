@@ -16,10 +16,10 @@ export interface TransformConfig<S, R = any> {
 export class PersistConfigBuilder<S extends PlainObject> {
   private readonly initialState: S;
 
-  private readonly whitelist: string[] = [];
+  private readonly whitelist: string[];
 
   // eslint-disable-next-line typescript/no-explicit-any
-  private readonly transforms: Array<Transform<any, any>> = [];
+  private readonly transforms: Array<Transform<any, any>>;
 
   public constructor(initialState: S) {
     invariant(
@@ -27,6 +27,8 @@ export class PersistConfigBuilder<S extends PlainObject> {
       "ReducerBuilder: `initialState` expected to be a plain object.",
     );
 
+    this.whitelist = [];
+    this.transforms = [];
     this.initialState = initialState;
   }
 

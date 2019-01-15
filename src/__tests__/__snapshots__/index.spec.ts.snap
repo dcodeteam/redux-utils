@@ -2,8 +2,16 @@
 
 exports[`index public api 1`] = `
 Object {
+  "AsyncRequest": undefined,
+  "AsyncValue": undefined,
+  "Dict": undefined,
+  "FulfillAction": undefined,
+  "PerformAction": undefined,
   "PersistConfigBuilder": [Function],
   "ReducerBuilder": [Function],
+  "RejectAction": undefined,
+  "SubReducer": undefined,
+  "TransformConfig": undefined,
   "createAsyncRequestReducer": [Function],
   "createAsyncValueDictReducer": [Function],
   "createAsyncValueReducer": [Function],

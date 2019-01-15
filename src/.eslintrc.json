@@ -1,3 +1,4 @@
 {
+  "root": true,
   "extends": "@dc0de/eslint-config"
 }

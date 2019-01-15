@@ -7,8 +7,7 @@ notifications:
 
 node_js:
   - 10
-  - 9
-  - 8
+  - 11
 
 install:
   - yarn
@@ -20,7 +19,7 @@ script:
   - yarn build
 
 after_success:
-  - if [[ $TRAVIS_NODE_VERSION == "8" ]]; then yarn codecov; fi
+  - if [[ $TRAVIS_NODE_VERSION == "10" ]]; then yarn codecov; fi
 
 branches:
   except:
@@ -36,4 +35,4 @@ deploy:
     tags: true
     branch: master
     repo: dcodeteam/redux-utils
-    condition: "$TRAVIS_NODE_VERSION = 8"
+    condition: "$TRAVIS_NODE_VERSION = 10"

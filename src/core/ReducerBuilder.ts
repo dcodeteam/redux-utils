@@ -13,7 +13,7 @@ import { PlainObject, SubReducer } from "./types";
 export class ReducerBuilder<S extends PlainObject> {
   protected readonly initialState: S;
 
-  protected readonly reducers: Array<SubReducer<S>> = [];
+  protected readonly reducers: Array<SubReducer<S>>;
 
   public constructor(initialState: S) {
     invariant(
@@ -21,6 +21,7 @@ export class ReducerBuilder<S extends PlainObject> {
       "ReducerBuilder: `initialState` expected to be a plain object.",
     );
 
+    this.reducers = [];
     this.initialState = initialState;
   }
 
