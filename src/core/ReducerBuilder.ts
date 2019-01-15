@@ -49,9 +49,8 @@ export class ReducerBuilder<S extends PlainObject> {
     if (actions.length === 0) {
       warning(true, "ReducerBuilder: `actions` expected not to be empty.");
     } else {
-      this.addSubReducer(
-        (state, action) =>
-          actions.indexOf(action.type) === -1 ? state : reducer(state, action),
+      this.addSubReducer((state, action) =>
+        actions.indexOf(action.type) === -1 ? state : reducer(state, action),
       );
     }
 

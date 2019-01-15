@@ -6,25 +6,25 @@ notifications:
   email: false
 
 node_js:
-- 10
-- 9
-- 8
+  - 10
+  - 9
+  - 8
 
 install:
-- yarn
+  - yarn
 
 before_script:
-- yarn ci
+  - yarn ci
 
 script:
-- yarn build
+  - yarn build
 
 after_success:
-- if [[ $TRAVIS_NODE_VERSION == "8" ]]; then yarn codecov; fi
+  - if [[ $TRAVIS_NODE_VERSION == "8" ]]; then yarn codecov; fi
 
 branches:
   except:
-  - "/^v\\d+\\.\\d+\\.\\d+$/"
+    - "/^v\\d+\\.\\d+\\.\\d+$/"
 
 deploy:
   provider: npm

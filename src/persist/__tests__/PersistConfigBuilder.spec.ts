@@ -82,16 +82,12 @@ describe("PersistConfigBuilder", () => {
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransforms("foo", {
-        in: () => {},
-      });
+      builder.addChildTransforms("foo", { in: () => {} });
     }).toThrowErrorMatchingSnapshot();
 
     expect(() => {
       // @ts-ignore
-      builder.addChildTransforms("foo", {
-        out: () => {},
-      });
+      builder.addChildTransforms("foo", { out: () => {} });
     }).toThrowErrorMatchingSnapshot();
 
     expect(consoleError).not.toBeCalled();

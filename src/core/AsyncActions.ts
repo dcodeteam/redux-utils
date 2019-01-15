@@ -31,6 +31,7 @@ export function createPerformAction<M>(
 
 export function isFulfillAction(
   action: AnyAction,
+  // eslint-disable-next-line typescript/no-explicit-any
 ): action is FulfillAction<any> {
   return Boolean(
     action &&
